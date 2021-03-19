@@ -13,7 +13,7 @@ provider "aws" {
   region   = var.region
 }
 
-resource "aws_instance" "Main" {
+resource "aws_instance" "SonarQube" {
   ami           = "ami-04d29b6f966df1537"
   instance_type = "t2.micro"
   key_name        = "${var.keyname}"
@@ -81,12 +81,4 @@ resource "aws_security_group" "Security_Group" {
   tags = {
     Name = "Security_Group"
   }
-}
-
-output "jenkins_ip_address" {
-  value = "${aws_instance.Jenkins.public_dns}"
-}
-
-output "docker_ip_address" {
-  value = "${aws_instance.Docker.public_dns}"
 }
